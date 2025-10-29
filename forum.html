@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDM - Fórum de Dúvidas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css"> <link rel="stylesheet" href="css/forum.css"> </head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu JDM</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+             <ul class="sidebar-menu">
+    <li><a href="app.html"><i class="fas fa-home"></i> Início</a></li>
+    <li><a href="profile.html"><i class="fas fa-user"></i> Perfil</a></li>
+    <li><a href="educational.html"><i class="fas fa-book"></i> Seção Educativa</a></li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+    <li><a href="register_construction.html"><i class="fas fa-building"></i> Cadastro de Obra</a></li>
+    <li><a href="forum.html"><i class="fas fa-comments"></i> Fórum de Dúvidas</a></li>
+    <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+    <li><a href="calculator.html"><i class="fas fa-calculator"></i> Cálculo de Materiais</a></li> <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+</ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <header>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <h1>JDM</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName">Usuário</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <div class="forum-page-content">
+                <div class="forum-card">
+                    <button class="back-button-modern" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+                    <h2 class="forum-title">Fórum de Dúvidas</h2>
+                    <p class="forum-subtitle">Espaço para compartilhar conhecimentos e tirar suas dúvidas.</p>
+
+                    <div class="new-question-section">
+                        <h3><i class="fas fa-question-circle"></i> Envie sua Dúvida</h3>
+                        <form id="askQuestionForm" class="question-form">
+                            <div class="form-group">
+                                <label for="questionEmail"><i class="fas fa-envelope"></i> Seu Email:</label>
+                                <input type="email" id="questionEmail" name="email" placeholder="seuemail@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="questionText"><i class="fas fa-comment-dots"></i> Digite sua Dúvida:</label>
+                                <textarea id="questionText" name="question" rows="4" placeholder="Descreva sua dúvida detalhadamente..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-question-btn"><i class="fas fa-paper-plane"></i> Enviar Dúvida</button>
+                        </form>
+                    </div>
+
+                    <div class="recent-questions-section">
+                        <h3><i class="fas fa-comments"></i> Dúvidas Recentes</h3>
+                        <div id="questionsList" class="questions-list">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                                    <span class="user-name">Usuário Exemplo 1</span>
+                                    <span class="question-date">2 horas atrás</span>
+                                </div>
+                                <p class="question-text">Qual a melhor argamassa para assentar porcelanato em área externa?</p>
+                                <div class="question-actions">
+                                    <button class="answer-btn"><i class="fas fa-reply"></i> Responder</button>
+                                    <button class="view-answers-btn"><i class="fas fa-eye"></i> Ver Respostas (3)</button>
+                                </div>
+                                <div class="answers-container">
+                                    </div>
+                            </div>
+
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                                    <span class="user-name">Usuário Exemplo 2</span>
+                                    <span class="question-date">Ontem</span>
+                                </div>
+                                <p class="question-text">Como calcular a quantidade de cimento para uma laje de 10m²?</p>
+                                <div class="question-actions">
+                                    <button class="answer-btn"><i class="fas fa-reply"></i> Responder</button>
+                                    <button class="view-answers-btn"><i class="fas fa-eye"></i> Ver Respostas (2)</button>
+                                </div>
+                                <div class="answers-container">
+                                    </div>
+                            </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script> <script src="js/forum.js"></script> </body>
+</html>

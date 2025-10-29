@@ -1,0 +1,343 @@
+/* Estilos específicos para a tela de Calculadora de Materiais Essenciais */
+
+.calculator-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo */
+    min-height: calc(100vh - 80px); /* Altura mínima, descontando o header */
+    padding: 30px 20px;
+    background-color: var(--light-bg); /* Cor de fundo suave */
+    overflow-y: auto;
+}
+
+.calculator-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 850px; /* Largura um pouco maior para acomodar mais seções */
+    padding: 30px;
+    position: relative;
+    animation: fadeInScale 0.5s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator-title {
+    font-size: 2.2rem;
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.calculator-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.calculator-subtitle {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Abas de Cálculo */
+.calculation-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    margin-top: 30px;
+    margin-bottom: 25px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 700px; /* Largura das abas */
+    gap: 5px; /* Espaçamento entre os botões */
+}
+
+.calculation-tabs .calc-tab-btn {
+    flex: 1; /* Ocupa espaço igual */
+    min-width: 120px; /* Garante que não fiquem muito pequenos */
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculation-tabs .calc-tab-btn i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.calculation-tabs .calc-tab-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 3px 8px rgba(255, 165, 0, 0.3);
+}
+
+.calculation-tabs .calc-tab-btn:hover:not(.active) {
+    background-color: #e0e0e0;
+}
+
+/* Seções de Cálculo */
+.calculation-sections {
+    width: 100%;
+}
+
+.calculation-section {
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    display: none; /* Escondido por padrão, mostrado via JS */
+}
+
+.calculation-section.active {
+    display: block; /* Mostra a seção ativa */
+}
+
+.calculation-section h3 {
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calc-form .form-group {
+    margin-bottom: 15px;
+}
+
+.calc-form label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.calc-form input[type="number"],
+.calc-form select {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none; /* Remove estilo padrão do select */
+    background-color: white; /* Garante fundo branco para select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.9a17.6%2017.6%200%200%200-13.6-6.6H19.9a17.6%2017.6%200%200%200-13.6%206.6%2017.6%2017.6%200%200%200%200%2024.1l117.8%20117.8a17.6%2017.6%200%200%200%2024.1%200l117.8-117.8a17.6%2017.6%200%200%200%200-24.1z%22%2F%3E%3C%2Fsvg%3E'); /* Seta para select */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.calc-form input[type="number"]:focus,
+.calc-form select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2);
+    outline: none;
+}
+
+.calc-form small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.calculate-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculate-btn i {
+    margin-right: 10px;
+}
+
+.calculate-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Resultados do Cálculo */
+.calculation-results {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.calculation-results h4 {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.calculation-results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.calculation-results ul li {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+.calculation-results ul li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.calculation-results ul li strong {
+    color: var(--primary-color);
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculator-page-content {
+        padding: 20px 15px;
+    }
+    .calculator-card {
+        padding: 25px;
+        max-width: 100%; /* Ajuste para preencher melhor em telas menores */
+    }
+    .calculator-title {
+        font-size: 1.8rem;
+    }
+    .calculator-subtitle {
+        font-size: 0.9rem;
+    }
+    .calculation-tabs {
+        flex-wrap: wrap; /* Garante que as abas quebrem a linha */
+        max-width: 100%;
+        justify-content: space-around;
+    }
+    .calculation-tabs .calc-tab-btn {
+        flex: none; /* Desativa o flex grow para controle manual */
+        width: 48%; /* Duas abas por linha */
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    .calculation-section h3 {
+        font-size: 1.4rem;
+    }
+    .calc-form input,
+    .calc-form select {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+    .calculate-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .calculation-results h4 {
+        font-size: 1.1rem;
+    }
+    .calculation-results ul li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-page-content {
+        padding: 15px 10px;
+    }
+    .calculator-card {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .calculator-title {
+        font-size: 1.6rem;
+    }
+    .calculator-subtitle {
+        font-size: 0.85rem;
+    }
+    .calculation-tabs .calc-tab-btn {
+        width: 100%; /* Uma aba por linha em telas muito pequenas */
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+    .calculation-section h3 {
+        font-size: 1.2rem;
+    }
+    .calc-form input,
+    .calc-form select {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    .calculate-btn {
+        font-size: 0.95rem;
+    }
+    .calculation-results h4 {
+        font-size: 1rem;
+    }
+    .calculation-results ul li {
+        font-size: 0.9rem;
+    }
+}
+ .back-button-modern {
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #dd721b;
+            cursor: pointer;
+            transition: color 0.3s;
+        }

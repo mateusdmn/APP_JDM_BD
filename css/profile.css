@@ -1,0 +1,780 @@
+/* Importa as variáveis de cor do seu style.css, se não estiverem globalmente acessíveis */
+/* Se root já estiver no style.css e linkado antes, não precisa repetir aqui. */
+:root {
+    --primary-color: #FFA500;   /* Laranja */
+    --secondary-color: #FF8C00; /* Laranja mais escuro */
+    --accent-color: #FF4500;    /* Vermelho alaranjado */
+    --light-color: #FFF8E1;     /* Amarelo claro */
+    --dark-color: #E65100;      /* Laranja escuro */
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --card-bg: #ffffff;
+}
+
+/* Container principal da página de perfil */
+.profile-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para evitar que o card ocupe 100vh em telas grandes */
+    min-height: calc(100vh - 80px); /* Altura mínima para o conteúdo, descontando o header */
+    padding: 30px 20px;
+    background-color: var(--light-bg);
+    overflow-y: auto; /* Permite scroll se o conteúdo for grande */
+}
+
+.profile-card-modern {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Um pouco mais largo para as opções */
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    animation: fadeInScale 0.5s ease-out forwards;
+}
+
+/* Animação de entrada do cartão */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Botão de voltar */
+.back-button-modern {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    opacity: 0.8;
+}
+
+.back-button-modern:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+    opacity: 1;
+}
+
+/* Cabeçalho do perfil (foto/nome/email) */
+.profile-header-modern {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Linha divisória suave */
+}
+
+.profile-avatar-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--light-color); /* Fundo caso a imagem não carregue */
+    margin: 0 auto 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--primary-color); /* Borda destacada */
+    box-shadow: 0 0 0 5px rgba(255, 165, 0, 0.1); /* Efeito de anel */
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o container */
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+/* Ícone de fallback (se usar) */
+/* .profile-avatar-icon {
+    font-size: 5rem;
+    color: var(--primary-color);
+} */
+
+.profile-header-modern h2 {
+    font-size: 1.9rem;
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Opções de perfil (Alterar Foto, Senha, etc.) */
+.profile-options-modern, .profile-general-settings {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.profile-general-settings h3 {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 8px;
+}
+
+.profile-option-item-modern {
+    display: flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: var(--light-bg); /* Fundo claro para cada item */
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.profile-option-item-modern i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--orange-primary); /* Ícones com a cor principal */
+    width: 25px; /* Largura fixa para alinhar os textos */
+    text-align: center;
+}
+
+.profile-option-item-modern:hover {
+    background-color: #f8f9fa; /* Alterar para cor laranja mais clara */
+    color: rgb(196, 94, 27); /* Manter branco ou ajustar conforme necessidade */
+}
+
+.profile-option-item-modern:hover i {
+    color: rgb(214, 121, 15); /* Pode manter branco ou mudar para outra cor de ícone */
+}
+
+/* Botão de Sair */
+.profile-logout-btn-modern {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-color); /* Cor de destaque para Sair */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+    margin-top: 20px;
+}
+
+.profile-logout-btn-modern i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.profile-logout-btn-modern:hover {
+    background-color: #dc3545; /* Um vermelho mais escuro */
+    transform: translateY(-3px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .profile-page-content {
+        padding: 20px 15px;
+    }
+    .profile-card-modern {
+        padding: 25px;
+    }
+    .profile-header-modern h2 {
+        font-size: 1.6rem;
+    }
+    .profile-email {
+        font-size: 0.9rem;
+    }
+    .profile-avatar-container {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-option-item-modern {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+    .profile-logout-btn-modern {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    .back-button-modern {
+        font-size: 1.4rem;
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-page-content {
+        padding: 15px 10px;
+    }
+    .profile-card-modern {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .profile-header-modern h2 {
+        font-size: 1.4rem;
+    }
+    .profile-email {
+        font-size: 0.85rem;
+    }
+    .profile-avatar-container {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .profile-option-item-modern {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+    .profile-option-item-modern i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+    }
+    .profile-logout-btn-modern {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+    .back-button-modern {
+        font-size: 1.2rem;
+        top: 15px;
+        left: 15px;
+    }
+}
+
+        /* Estilos para os modais */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: black;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .modal-footer {
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-image-container:hover .change-photo-overlay {
+            display: flex;
+        }
+        
+        .change-photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .change-photo-overlay i {
+            color: white;
+            font-size: 24px;
+        }
+         .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: none;
+            animation: slideIn 0.3s ease;
+            position: relative;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #aaa;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #3498db;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .modal-footer {
+            margin-top: 30px;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #e78c14;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .profile-image-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .change-photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        
+        .profile-image-container:hover .change-photo-overlay {
+            opacity: 1;
+        }
+        
+        .change-photo-overlay i {
+            color: white;
+            font-size: 28px;
+        }
+        
+        /* Estilo moderno para checkboxes */
+        .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+        }
+        
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: #f1f1f1;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #d36f12;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #3498db;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .checkbox-container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        /* Layout moderno para a página de perfil */
+        .profile-header-modern {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        .back-button-modern {
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #dd721b;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .back-button-modern:hover {
+            color: #ca851d;
+        }
+        
+        #profileNameModern {
+            font-size: 24px;
+            margin: 15px 0 5px;
+            color: #2c3e50;
+        }
+        
+        .profile-email {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .profile-options-modern {
+            background: #fff;
+            border-radius: 16px;
+            padding: 0;
+            margin: 0 auto 30px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-option-item-modern {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            text-decoration: none;
+            color: #14100b;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s;
+        }
+        
+        .profile-option-item-modern:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-option-item-modern:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+        
+        .profile-option-item-modern i {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #3498db;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .profile-general-settings {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 0;
+            margin: 0 auto 30px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-general-settings h3 {
+            padding: 0 25px 15px;
+            margin: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .profile-logout-btn-modern {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .profile-logout-btn-modern:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+        
+        .profile-logout-btn-modern i {
+            margin-right: 10px;
+        }
+        
+        /* Efeito de loading */
+        .loading-spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Dark mode */
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+        
+        body.dark-theme .modal-content {
+            background-color: #2d2d2d;
+            color: #f1f1f1;
+        }
+        
+        body.dark-theme .modal h2 {
+            color: #f1f1f1;
+            border-bottom-color: #444;
+        }
+        
+        body.dark-theme .form-group label {
+            color: #f1f1f1;
+        }
+        
+        body.dark-theme input, 
+        body.dark-theme select {
+            background-color: #333;
+            border-color: #444;
+            color: #f1f1f1;
+        }
+        
+        body.dark-theme .form-group input:focus, 
+        body.dark-theme .form-group select:focus {
+            border-color: #f18911;
+            background-color: #444;
+        }
+        
+        body.dark-theme .profile-options-modern,
+        body.dark-theme .profile-general-settings {
+            background-color: #2d2d2d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.dark-theme .profile-option-item-modern {
+            color: #f1f1f1;
+            border-bottom-color: #444;
+        }
+        
+        body.dark-theme .profile-option-item-modern:hover {
+            background-color: #333;
+        }
+        
+        body.dark-theme .profile-general-settings h3 {
+            color: #f1f1f1;
+            border-bottom-color: #444;
+        }
+        
+        body.dark-theme .checkmark {
+            background-color: #444;
+        }
+        
+        body.dark-theme .checkbox-container:hover input ~ .checkmark {
+            background-color: #555;
+        }
+   

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDM - Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chart.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu JDM</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="app.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="educational.html"><i class="fas fa-book"></i> Seção Educativa</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                <li><a href="register_construction.html"><i class="fas fa-building"></i> Cadastro de Obra</a></li>
+                <li><a href="forum.html"><i class="fas fa-comments"></i> Fórum de Dúvidas</a></li>
+                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+                <li><a href="calculator.html"><i class="fas fa-calculator"></i> Cálculo de Materiais</a></li> 
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <header class="main-header">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <h1>JDM</h1>
+                </div>
+                <a href="profile.html" class="user-info">
+                    <span id="userName">Usuário</span>
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="welcome-section">
+                    <h2>Bem-vindo, <span class="welcome-user-name">Usuário</span>!</h2>
+                    <p>Acompanhe o andamento de suas obras e gerencie seus materiais.</p>
+                </div>
+                <!-- Banner e Informações da Obra -->
+                <div class="project-banner">
+                    <!-- Note: Você precisará garantir que "assets/engenharia.jfif" exista ou substituir por um URL/Placeholder -->
+                    <img src="assets/engenharia.jfif" alt="Obra Moderna" class="project-banner-image">
+                    <div class="project-banner-overlay">
+                        <h3>Construindo o Futuro, Hoje!</h3>
+                        <p>Nossa dedicação e inovação em cada projeto.</p>
+                        <a href="#" class="btn-banner">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="current-project">
+                    <h3>Obra em Andamento <span class="project-status status-in-progress">Em Progresso</span></h3>
+                    <div class="project-details">
+                        <!-- Note: Você precisará garantir que "assets/casa.jfif" exista ou substituir por um URL/Placeholder -->
+                        <img src="assets/casa.jfif" alt="Obra" class="project-image">
+                        <div class="project-info">
+                            <p><strong>Residencial Green Valley</strong></p>
+                            <p>Rua das Flores, 123 - Brasília/DF</p>
+                            <p>Início: 15/03/2025</p>
+                            <p>Previsão de término: 30/09/2025</p>
+                        </div>
+                    </div>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>65% concluído</span>
+                            <span>15 dias adiantado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Gráficos (Usaremos CANVAS para Chart.js) -->
+                <div class="dashboard-grid">
+                    <div class="chart-container">
+                        <h3>Consumo de Materiais</h3>
+                        <!-- Substituindo a div vazia por um CANVAS que o Chart.js precisa -->
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Progresso da Obra</h3>
+                        <!-- Substituindo a div vazia por um CANVAS que o Chart.js precisa -->
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="updates-section">
+                    <h3>Atualizações Recentes</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Hoje, 10:30</div>
+                            <div class="timeline-content">
+                                <h4>Entrega de Materiais</h4>
+                                <p>Foram entregues 500 tijolos e 50 sacos de cimento conforme solicitado.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Ontem, 14:15</div>
+                            <div class="timeline-content">
+                                <h4>Alerta Climático</h4>
+                                <p>Previsão de chuva para os próximos 3 dias. Recomendado proteger materiais sensíveis à umidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionando a biblioteca Chart.js (CRÍTICO para os gráficos funcionarem) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDM - Calculadora de Materiais Essenciais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css"> <link rel="stylesheet" href="css/calculator.css"> </head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu JDM</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+             <ul class="sidebar-menu">
+    <li><a href="app.html"><i class="fas fa-home"></i> Início</a></li>
+    <li><a href="profile.html"><i class="fas fa-user"></i> Perfil</a></li>
+    <li><a href="educational.html"><i class="fas fa-book"></i> Seção Educativa</a></li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+    <li><a href="register_construction.html"><i class="fas fa-building"></i> Cadastro de Obra</a></li>
+    <li><a href="forum.html"><i class="fas fa-comments"></i> Fórum de Dúvidas</a></li>
+    <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+    <li><a href="calculator.html"><i class="fas fa-calculator"></i> Cálculo de Materiais</a></li> <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+</ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <header>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <h1>JDM</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName">Usuário</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <div class="calculator-page-content">
+                <div class="calculator-card">
+                    <button class="back-button-modern" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+                    <h2 class="calculator-title">Calculadora de Materiais</h2>
+                    <p class="calculator-subtitle">Estime as quantidades de materiais essenciais para sua obra.</p>
+
+                    <div class="calculation-tabs">
+                        <button class="calc-tab-btn active" data-target="concreteSection"><i class="fas fa-cube"></i> Concreto</button>
+                        <button class="calc-tab-btn" data-target="masonrySection"><i class="fas fa-brick"></i> Alvenaria</button>
+                        <button class="calc-tab-btn" data-target="plasteringSection"><i class="fas fa-paint-roller"></i> Reboco/Chapisco</button>
+                        <button class="calc-tab-btn" data-target="paintingSection"><i class="fas fa-paint-brush"></i> Pintura</button>
+                    </div>
+
+                    <div class="calculation-sections">
+                        <div class="calculation-section active" id="concreteSection">
+                            <h3>Cálculo para Lajes, Vigas e Fundações</h3>
+                            <form id="concreteForm" class="calc-form">
+                                <div class="form-group">
+                                    <label for="concVolume">Volume Desejado (m³):</label>
+                                    <input type="number" id="concVolume" step="0.01" min="0.01" placeholder="Ex: 2.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="concRatio">Traço do Concreto (Ex: 1:2:3 para cimento:areia:brita):</label>
+                                    <select id="concRatio" required>
+                                        <option value="1:2:3">1:2:3 (fck 20 MPa - Uso Geral)</option>
+                                        <option value="1:2.5:3.5">1:2.5:3.5 (fck 15 MPa - Sem função estrutural)</option>
+                                        <option value="1:1.5:3">1:1.5:3 (fck 25 MPa - Estrutural)</option>
+                                        </select>
+                                </div>
+                                <button type="submit" class="calculate-btn"><i class="fas fa-calculator"></i> Calcular Concreto</button>
+                            </form>
+                            <div class="calculation-results" id="concreteResults"></div>
+                        </div>
+
+                        <div class="calculation-section" id="masonrySection">
+                            <h3>Cálculo para Paredes</h3>
+                            <form id="masonryForm" class="calc-form">
+                                <div class="form-group">
+                                    <label for="masonryArea">Área da Parede (m²):</label>
+                                    <input type="number" id="masonryArea" step="0.01" min="0.01" placeholder="Ex: 20.00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="brickType">Tipo de Tijolo/Bloco:</label>
+                                    <select id="brickType" required>
+                                        <option value="">Selecione</option>
+                                        <option value="ceramic_6_hole">Tijolo Cerâmico (6 furos - 9x19x19cm)</option>
+                                        <option value="ceramic_8_hole">Tijolo Cerâmico (8 furos - 9x19x29cm)</option>
+                                        <option value="concrete_14x19x39">Bloco de Concreto (14x19x39cm)</option>
+                                        <option value="concrete_9x19x39">Bloco de Concreto (9x19x39cm)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mortarThickness">Espessura da Junta de Argamassa (cm):</label>
+                                    <input type="number" id="mortarThickness" step="0.1" min="0.5" max="2.5" value="1.5" placeholder="Ex: 1.5" required>
+                                </div>
+                                <button type="submit" class="calculate-btn"><i class="fas fa-calculator"></i> Calcular Alvenaria</button>
+                            </form>
+                            <div class="calculation-results" id="masonryResults"></div>
+                        </div>
+
+                        <div class="calculation-section" id="plasteringSection">
+                            <h3>Cálculo para Reboco e Chapisco</h3>
+                            <form id="plasteringForm" class="calc-form">
+                                <div class="form-group">
+                                    <label for="plasteringArea">Área da Parede (m²):</label>
+                                    <input type="number" id="plasteringArea" step="0.01" min="0.01" placeholder="Ex: 30.00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="plasteringType">Tipo de Material:</label>
+                                    <select id="plasteringType" required>
+                                        <option value="">Selecione</option>
+                                        <option value="chapisco">Chapisco (2-3mm)</option>
+                                        <option value="embozo">Emboço (1.5-2.5cm)</option>
+                                        <option value="reboco">Reboco (0.5-1.5cm)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="calculate-btn"><i class="fas fa-calculator"></i> Calcular Reboco/Chapisco</button>
+                            </form>
+                            <div class="calculation-results" id="plasteringResults"></div>
+                        </div>
+
+                        <div class="calculation-section" id="paintingSection">
+                            <h3>Cálculo para Pintura</h3>
+                            <form id="paintingForm" class="calc-form">
+                                <div class="form-group">
+                                    <label for="paintingArea">Área a Ser Pintada (m²):</label>
+                                    <input type="number" id="paintingArea" step="0.01" min="0.01" placeholder="Ex: 40.00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="coats">Demãos de Tinta:</label>
+                                    <input type="number" id="coats" step="1" min="1" value="2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paintYield">Rendimento da Tinta (m²/litro/demão):</label>
+                                    <input type="number" id="paintYield" step="0.1" min="1" value="5" placeholder="Ex: 5 (varia por tinta)" required>
+                                    <small>Verifique o rendimento na embalagem da tinta.</small>
+                                </div>
+                                <button type="submit" class="calculate-btn"><i class="fas fa-calculator"></i> Calcular Pintura</button>
+                            </form>
+                            <div class="calculation-results" id="paintingResults"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script> <script src="js/calculator.js"></script> </body>
+</html>

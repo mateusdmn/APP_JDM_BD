@@ -1,0 +1,523 @@
+/* Estilos específicos para a tela de Seção Educativa */
+
+.educational-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo */
+    min-height: calc(100vh - 80px); /* Altura mínima, descontando o header */
+    padding: 30px 20px;
+    background-color: var(--light-bg); /* Cor de fundo suave */
+    overflow-y: auto;
+}
+
+.educational-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Largura maior para o conteúdo educativo */
+    padding: 30px;
+    position: relative;
+    animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.educational-title {
+    font-size: 2.2rem;
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.educational-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Seção de Vídeo */
+.video-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.video-player-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.video-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Seção de Conteúdo de Texto */
+.text-content-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.text-content-section h3 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    display: inline-block; /* Para a linha ficar apenas abaixo do texto */
+}
+
+.text-content-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* Seção de Artigos Relacionados */
+.related-articles-section {
+    margin-bottom: 20px;
+}
+
+.related-articles-section h3 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.article-item {
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.article-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.article-item h4 {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    flex-grow: 1; /* Faz o título ocupar o espaço disponível */
+}
+
+.article-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+.read-more-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .educational-page-content {
+        padding: 20px 15px;
+    }
+    .educational-card {
+        padding: 25px;
+    }
+    .educational-title {
+        font-size: 1.8rem;
+    }
+    .text-content-section h3,
+    .related-articles-section h3 {
+        font-size: 1.5rem;
+    }
+    .text-content-section p {
+        font-size: 0.95rem;
+    }
+    .article-list {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+    .article-item i {
+        font-size: 2rem;
+    }
+    .article-item h4 {
+        font-size: 1.1rem;
+    }
+    .read-more-btn {
+        padding: 7px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .educational-page-content {
+        padding: 15px 10px;
+    }
+    .educational-card {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .educational-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    .text-content-section h3,
+    .related-articles-section h3 {
+        font-size: 1.3rem;
+    }
+    .text-content-section p {
+        font-size: 0.9rem;
+    }
+    .video-description {
+        font-size: 0.9rem;
+    }
+}
+.back-button-modern {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    opacity: 0.8;
+}
+
+.back-button-modern:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+    opacity: 1;
+}
+ .back-button-modern {
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #dd721b;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        /* Estilos para o fundo tecnológico */
+body {
+    background-color: #0a192f;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(21, 101, 192, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(156, 39, 176, 0.2) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: #e6f1ff;
+}
+
+.app-container {
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    min-height: 100vh;
+}
+
+/* Estilos modernos para o player de vídeo */
+.video-player-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.video-player-container:hover {
+    transform: translateY(-5px);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.video-overlay:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.play-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para os cards de conteúdo */
+.educational-card {
+    background: rgba(21, 101, 192, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.article-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.article-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.read-more-btn {
+    background: linear-gradient(45deg, #00b4db, #0083b0);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
+}
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.educational-page-content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.article-item {
+    animation: fadeIn 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.article-item:nth-child(1) { animation-delay: 0.2s; }
+.article-item:nth-child(2) { animation-delay: 0.4s; }
+.article-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Efeito de partículas para o fundo (opcional) */
+.particle {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+/* Reset e estilos básicos */
+body {
+    background-color: #f5f5f5; /* Fundo claro */
+    color: #000000; /* Texto preto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+/* Estilos para o card principal */
+.educational-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.educational-title {
+    color: #000000;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.educational-subtitle {
+    color: #000000;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* Estilos para o player de vídeo */
+.video-player-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.video-description {
+    color: #333333;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Estilos para o conteúdo de texto */
+.text-content-section {
+    margin-bottom: 30px;
+}
+
+.text-content-section h3 {
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+}
+
+.text-content-section p {
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Estilos para os artigos relacionados */
+.related-articles-section h3 {
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.article-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.article-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1 1 300px;
+    transition: box-shadow 0.3s ease;
+}
+
+.article-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-item i {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.article-item h4 {
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: #1a252f;
+}
+
+/* Botão de voltar */
+
+
+.back-button-modern:hover {
+    color: #2c3e50;
+}

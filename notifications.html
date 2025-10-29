@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDM - Notificações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css"> <link rel="stylesheet" href="css/notifications.css"> </head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu JDM</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+           <ul class="sidebar-menu">
+    <li><a href="app.html"><i class="fas fa-home"></i> Início</a></li>
+    <li><a href="profile.html"><i class="fas fa-user"></i> Perfil</a></li>
+    <li><a href="educational.html"><i class="fas fa-book"></i> Seção Educativa</a></li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+    <li><a href="register_construction.html"><i class="fas fa-building"></i> Cadastro de Obra</a></li>
+    <li><a href="forum.html"><i class="fas fa-comments"></i> Fórum de Dúvidas</a></li>
+    <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+    <li><a href="calculator.html"><i class="fas fa-calculator"></i> Cálculo de Materiais</a></li> <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+</ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <header>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <h1>JDM</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName">Usuário</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <div class="notifications-page-content">
+                <div class="notifications-card">
+                    <button class="back-button-modern" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+                    <h2 class="notifications-title">Notificações</h2>
+                    <p class="notifications-subtitle">Mantenha-se atualizado sobre seus projetos.</p>
+
+                    <div class="notification-tabs">
+                        <button class="tab-btn active" data-tab="all">Todas</button>
+                        <button class="tab-btn" data-tab="unread">Não Lidas</button>
+                        <button class="tab-btn" data-tab="important">Importantes</button>
+                    </div>
+
+                    <div class="notification-list" id="notificationList">
+                        <div class="notification-item unread important" data-id="1">
+                            <div class="notification-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4 class="notification-heading">Atenção: Atraso na Entrega de Cimento!</h4>
+                                <p class="notification-text">A entrega de cimento para a obra 'Residencial Alphaville' foi adiada em 2 dias. Verifique o novo prazo.</p>
+                                <span class="notification-time">10 min atrás</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="mark-as-read-btn" title="Marcar como lida"><i class="fas fa-envelope-open"></i></button>
+                                <button class="delete-notification-btn" title="Excluir"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item read" data-id="2">
+                            <div class="notification-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4 class="notification-heading">Obra 'Green Valley' Concluída!</h4>
+                                <p class="notification-text">Parabéns! A obra 'Residencial Green Valley' foi finalizada com sucesso. Acesse o relatório completo.</p>
+                                <span class="notification-time">1 dia atrás</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="mark-as-unread-btn" title="Marcar como não lida"><i class="fas fa-envelope"></i></button>
+                                <button class="delete-notification-btn" title="Excluir"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item unread" data-id="3">
+                            <div class="notification-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4 class="notification-heading">Nova Dica: Economia de Materiais</h4>
+                                <p class="notification-text">Confira nossa nova dica na Seção Educativa sobre como otimizar o uso de materiais e reduzir desperdícios.</p>
+                                <span class="notification-time">2 dias atrás</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="mark-as-read-btn" title="Marcar como lida"><i class="fas fa-envelope-open"></i></button>
+                                <button class="delete-notification-btn" title="Excluir"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item read important" data-id="4">
+                            <div class="notification-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4 class="notification-heading">Lembrete: Reunião de Projeto</h4>
+                                <p class="notification-text">Reunião agendada para amanhã, 03/06, às 14:00, para discutir o progresso da obra 'Porto Seguro'.</p>
+                                <span class="notification-time">3 dias atrás</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="mark-as-unread-btn" title="Marcar como não lida"><i class="fas fa-envelope"></i></button>
+                                <button class="delete-notification-btn" title="Excluir"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script> <script src="js/notifications.js"></script> </body>
+</html>

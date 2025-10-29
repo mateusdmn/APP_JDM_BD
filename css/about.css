@@ -1,0 +1,259 @@
+/* Estilos específicos para a tela "Sobre Nós" */
+
+.about-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo */
+    min-height: calc(100vh - 80px); /* Altura mínima, descontando o header */
+    padding: 30px 20px;
+    background-color: var(--light-bg); /* Cor de fundo suave */
+    overflow-y: auto;
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 850px; /* Mais largo para acomodar o conteúdo */
+    padding: 30px;
+    position: relative;
+    animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.about-title {
+    font-size: 2.2rem;
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.about-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.about-section {
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza conteúdo dentro da seção */
+    text-align: center;
+}
+
+.about-section h3 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    max-width: 700px; /* Limita largura do texto para legibilidade */
+    margin: 0 auto;
+}
+
+.icon-bubble {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(255, 165, 0, 0.3);
+}
+
+.icon-bubble i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* Estilos específicos para a seção de Valores */
+.about-section.values {
+    background-color: var(--card-bg); /* Fundo branco para seções diferentes */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.about-section.values ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas flexíveis */
+    gap: 15px;
+    width: 100%;
+}
+
+.about-section.values li {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-bg);
+    padding: 12px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.about-section.values li:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.about-section.values li:hover i {
+    color: white;
+}
+
+.about-section.values i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Seção de Contato */
+.about-contact {
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+}
+
+.about-contact h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.about-contact p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.contact-btn {
+    display: inline-flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 2px solid white; /* Borda branca */
+}
+
+.contact-btn i {
+    margin-right: 10px;
+}
+
+.contact-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.contact-btn:hover i {
+    color: var(--primary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .about-page-content {
+        padding: 20px 15px;
+    }
+    .about-card {
+        padding: 25px;
+    }
+    .about-title {
+        font-size: 1.8rem;
+    }
+    .about-section h3 {
+        font-size: 1.5rem;
+    }
+    .about-section p {
+        font-size: 0.95rem;
+    }
+    .icon-bubble {
+        width: 60px;
+        height: 60px;
+    }
+    .icon-bubble i {
+        font-size: 2rem;
+    }
+    .about-section.values ul {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+    .about-contact h3 {
+        font-size: 1.6rem;
+    }
+    .about-contact p {
+        font-size: 1rem;
+    }
+    .contact-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page-content {
+        padding: 15px 10px;
+    }
+    .about-card {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .about-title {
+        font-size: 1.6rem;
+    }
+    .about-section {
+        padding: 20px;
+    }
+    .about-section h3 {
+        font-size: 1.3rem;
+    }
+    .about-section p {
+        font-size: 0.9rem;
+    }
+    .icon-bubble {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    .icon-bubble i {
+        font-size: 1.8rem;
+    }
+    .contact-btn {
+        display: block; /* Botões um abaixo do outro */
+        margin: 10px auto;
+        width: calc(100% - 20px);
+        max-width: 250px;
+    }
+}
