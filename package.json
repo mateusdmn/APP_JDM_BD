@@ -1,13 +1,13 @@
 {
   "name": "jdm",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Projeto Node.js com Express, Sequelize e MySQL",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matheus",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",

@@ -5,7 +5,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(
     'jdm_db',     // 1. Nome do Banco de Dados (que será criado)
     'root',       // 2. Usuário (o padrão é 'root')
-    '75467546', // 3. <-- COLOQUE SUA SENHA AQUI
+    'Jogadez10@', // 3. <-- COLOQUE SUA SENHA AQUI
     {
         host: 'localhost',
         dialect: 'mysql',
