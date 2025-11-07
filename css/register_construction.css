@@ -264,3 +264,127 @@
             cursor: pointer;
             transition: color 0.3s;
         }
+        .construction-management-layout {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    gap: 30px; /* Espaço entre as colunas */
+    max-width: 1400px;
+    margin: 20px auto;
+}
+
+/* Garante que a coluna de cadastro ocupe um espaço definido */
+.register-card {
+    flex: 1; /* Ocupa o espaço restante */
+    min-width: 350px; /* Tamanho mínimo para não achatar */
+    padding: 30px;
+}
+
+/* Container da Lista (2ª Coluna) */
+.construction-list-container {
+    flex: 2; /* Ocupa o dobro de espaço do cadastro */
+    min-width: 450px;
+    padding: 30px 0; /* Padding lateral não é necessário devido ao gap */
+}
+
+.list-title {
+    font-size: 1.8em;
+    color: var(--primary-color-dark);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+/* Grid para exibir os cartões de obra */
+.obra-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* --- Estilo do Cartão de Obra --- */
+
+.obra-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-left: 5px solid var(--secondary-color); /* Linha de destaque */
+    transition: transform 0.2s;
+}
+
+.obra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.obra-name {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--primary-color-dark);
+    margin-bottom: 10px;
+}
+
+.obra-detail {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.obra-detail i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+/* --- Botões de Ação (Update/Delete) --- */
+
+.obra-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    font-size: 0.9em;
+}
+
+/* Botão de Edição (Update) */
+.edit-btn {
+    background-color: #2196F3; /* Azul */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #0b7dda;
+}
+
+/* Botão de Exclusão (Delete) */
+.delete-btn {
+    background-color: #F44336; /* Vermelho */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Estilo para Telas Menores (Responsividade) */
+@media (max-width: 1024px) {
+    .construction-management-layout {
+        flex-direction: column; /* Pilha verticalmente */
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .register-card, .construction-list-container {
+        width: 100%;
+        min-width: unset;
+        max-width: 600px;
+        margin: 0;
+    }
+}
