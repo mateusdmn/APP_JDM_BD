@@ -40,7 +40,7 @@
                     <h1>JDM</h1>
                 </div>
                 <div class="user-info">
-                    <span id="userName">Usuário</span>
+                    <span id="userName">Carregando...</span>
                     <i class="fas fa-user-circle"></i>
                 </div>
             </header>
@@ -55,22 +55,25 @@
                                 <i class="fas fa-camera"></i>
                             </div>
                         </div>
-                        <h2 id="profileNameModern">Mateus Dantas Marques Nobrega</h2>
-                        <p class="profile-email" id="profileEmail">mateus@gmail.com</p>
+                        <h2 id="profileNameModern"></h2>
+                        <p class="profile-email" id="profileEmail"></p>
                     </div>
 
                     <div class="profile-options-modern">
                         <a href="#" class="profile-option-item-modern" id="changePhotoBtn">
                             <i class="fas fa-camera"></i> Alterar Foto
                         </a>
-                        <a href="#" class="profile-option-item-modern" id="changePasswordBtn">
-                            <i class="fas fa-key"></i> Alterar Senha
+                        <a href="#" class="profile-option-item-modern" id="changeAddressBtn">
+                            <i class="fas fa-map-marker-alt"></i> Alterar Endereço
                         </a>
                         <a href="#" class="profile-option-item-modern" id="changePhoneBtn">
                             <i class="fas fa-phone"></i> Alterar Telefone
                         </a>
                         <a href="#" class="profile-option-item-modern" id="changeEmailBtn">
                             <i class="fas fa-envelope"></i> Alterar Email
+                        </a>
+                        <a href="#" class="profile-option-item-modern" id="changePasswordBtn">
+                            <i class="fas fa-key"></i> Alterar Senha
                         </a>
                     </div>
                     
@@ -92,17 +95,17 @@
         </div>
     </div>
 
-    <div id="changePhotoModal" class="modal">
+    <div id="changeAddressModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Alterar Foto</h2>
+            <h2>Alterar Endereço</h2>
             <div class="form-group">
-                <label for="newPhoto">Escolha uma nova foto:</label>
-                <input type="file" id="newPhoto" accept="image/*" class="form-control">
+                <label for="newAddress">Novo endereço:</label>
+                <input type="text" id="newAddress" class="form-control" placeholder="Rua, Número, Bairro, Cidade">
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary">Cancelar</button>
-                <button id="savePhoto" class="btn btn-primary">Salvar</button>
+                <button id="saveAddress" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
@@ -126,6 +129,21 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary">Cancelar</button>
                 <button id="savePassword" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="changePhotoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Alterar Foto</h2>
+            <div class="form-group">
+                <label for="newPhoto">Escolha uma nova foto:</label>
+                <input type="file" id="newPhoto" accept="image/*" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Cancelar</button>
+                <button id="savePhoto" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
@@ -209,11 +227,11 @@
                 Ao utilizar o JDM, você aceita integralmente estes termos.
             </p>
             <div class="modal-footer">
-                <button class="btn btn-primary" id="closePrivacy">Entendido</button>
+                <button class="btn btn-primary close-modal" id="closePrivacy">Entendido</button>
             </div>
         </div>
     </div>
-    
+
     <script src="js/profile.js"></script>
 </body>
 </html>

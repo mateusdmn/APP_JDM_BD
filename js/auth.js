@@ -33,18 +33,39 @@ function showSuccess(element, message) { // Adicionado para a tela de cadastro
     }
 }
 
-// Verifica token no localStorage e redireciona
-function checkAuthAndRedirect() {
+// ⭐️ NOVO: FUNÇÃO DE AUTENTICAÇÃO GLOBAL CENTRALIZADA (SÓ USA localStorage)
+function setupGlobalAuth() {
+    // Agora todos os arquivos usam consistentemente localStorage
     const token = localStorage.getItem('jdm_token'); 
     const path = window.location.pathname;
 
-    // Se estiver em index.html ou cadastro.html E tiver token, vai para app.html
-    if ((path.includes('index.html') || path.includes('cadastro.html')) && token) {
+    // Páginas protegidas (que exigem login)
+    const protectedPages = ['app.html', 'profile.html', 'educational.html', 'about.html', 'register_construction.html', 'forum.html', 'notifications.html', 'calculator.html'];
+
+    const isAuthPage = path.includes('index.html') || path.includes('cadastro.html');
+    const isProtectedPage = protectedPages.some(page => path.includes(page));
+
+    // Se estiver em uma página de Login/Cadastro E JÁ tiver token, vai para Dashboard
+    if (isAuthPage && token) {
         window.location.href = 'app.html';
+        return;
     } 
-    // Se estiver em app.html E NÃO tiver token, volta para index.html
-    else if (path.includes('app.html') && !token) {
+    // Se estiver em uma página protegida E NÃO tiver token, volta para Login
+    if (isProtectedPage && !token) {
         window.location.href = 'index.html';
+        return;
+    }
+
+    // Lógica de Logout
+    const logoutBtn = document.getElementById('logoutBtn'); 
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('jdm_token');
+            localStorage.removeItem('jdm_currentUser'); 
+            // Redireciona para o login
+            window.location.href = 'index.html';
+        });
     }
 }
 
@@ -115,7 +136,8 @@ function validateRegistrationForm(elements) {
 // --- LÓGICA PRINCIPAL (DOMContentLoaded) ---
 
 document.addEventListener('DOMContentLoaded', function() {
-    checkAuthAndRedirect(); 
+    // ⭐️ Chama a função de autenticação global no início
+    setupGlobalAuth(); 
     
     // Elementos de mensagem
     const errorLogin = document.getElementById('loginError');
@@ -125,18 +147,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Elementos de formulário de Cadastro
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
-        const registerName = document.getElementById('registerName');
         const registerCPF = document.getElementById('registerCPF');
         const registerPhone = document.getElementById('registerPhone');
 
         // Adiciona as Máscaras de CPF e Telefone
-        registerCPF.addEventListener('input', (e) => {
-            e.target.value = maskCPF(e.target.value);
-        });
-
-        registerPhone.addEventListener('input', (e) => {
-            e.target.value = maskPhone(e.target.value);
-        });
+        if (registerCPF) { // Verificação para garantir que o elemento existe
+             registerCPF.addEventListener('input', (e) => {
+                e.target.value = maskCPF(e.target.value);
+            });
+        }
+       
+        if (registerPhone) { // Verificação para garantir que o elemento existe
+            registerPhone.addEventListener('input', (e) => {
+                e.target.value = maskPhone(e.target.value);
+            });
+        }
     }
 
     // --- 1. LÓGICA DE LOGIN (CHAMANDO A ROTA POST /api/auth/login) ---
@@ -158,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
 
                 if (response.ok) {
-                    // SUCESSO! Salva o token JWT e o objeto do usuário
+                    // SUCESSO! Salva o token JWT e o objeto do usuário no LOCALSTORAGE
                     localStorage.setItem('jdm_token', data.token); 
                     if (data.user) {
                         localStorage.setItem('jdm_currentUser', JSON.stringify(data.user)); 
@@ -221,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 
                 if (response.ok) {
-                    // SUCESSO! Salva o token e o usuário
+                    // SUCESSO! Salva o token e o usuário no LOCALSTORAGE
                     localStorage.setItem('jdm_token', data.token); 
                     if (data.user) {
                         localStorage.setItem('jdm_currentUser', JSON.stringify(data.user));
@@ -253,13 +278,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 3. LÓGICA DE LOGOUT ---
-    const logoutButton = document.getElementById('logoutBtn'); 
-    if (logoutButton) {
-        logoutButton.addEventListener('click', () => {
-            localStorage.removeItem('jdm_token');
-            localStorage.removeItem('jdm_currentUser'); // Remove os dados do usuário também
-            window.location.href = 'index.html'; 
-        });
-    }
+    // ⭐️ A Lógica de Logout foi movida para a função setupGlobalAuth() para ser acessível em todas as páginas.
 });

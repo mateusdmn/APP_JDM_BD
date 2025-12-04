@@ -937,3 +937,41 @@ body.dark-theme .profile-option-item-modern i {
     text-decoration: none;
     cursor: pointer;
 }
+.auth-body, .auth-page {
+    /* 1. Define o caminho da imagem de fundo. Ajuste 'fundo.jpg' se o nome for diferente. */
+    background-image: url('../assets/imgfundo.jpg'); 
+    
+    /* 2. Garante que a imagem cubra toda a área da tela sem repetição. */
+    background-size: cover;
+    
+    /* 3. Centraliza a imagem no viewport. */
+    background-position: center center;
+    
+    /* 4. Fixa a imagem para que ela não se mova quando o usuário rolar (efeito paralaxe). */
+    background-attachment: fixed;
+    
+    /* 5. Garante que o corpo ocupe 100% da altura do viewport para que o fundo funcione. */
+    min-height: 100vh;
+    
+    /* 6. Cor de fallback caso a imagem não carregue ou para sobreposição inicial. */
+    background-color: #f0f0f0; 
+
+    /* Garante que o conteúdo (auth-container) fique centralizado e visível */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Recomendação: Adicionar um overlay para melhorar a legibilidade */
+/* Isso escurece ligeiramente o fundo e destaca o formulário branco. */
+.auth-body::before, .auth-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cor preta com 30% de opacidade */
+    background-color: rgba(0, 0, 0, 0.3); 
+    z-index: -1; /* Fica abaixo do conteúdo da página */
+}
