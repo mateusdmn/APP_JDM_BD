@@ -13,7 +13,8 @@ connectDB();
 
 // Importa os modelos (Obrigatoriamente após a conexão)
 const User = require('./models/user'); 
-const Construction = require('./models/Construction'); 
+const Construction = require('./models/Construction');
+const Monetization = require('./models/Monetization'); 
 
 // =======================================================
 // 2. ASSOCIAÇÕES DO SEQUELIZE (Relação entre tabelas)
@@ -52,6 +53,8 @@ const constructionRoutes = require('./constructionRoutes');
 // Usa as rotas de API
 app.use('/api/auth', authRoutes); 
 app.use('/api/construction', constructionRoutes);
+const monetizationRoutes = require('./monetizationRoutes');
+app.use('/api/monetizacao', monetizationRoutes);
 
 // =======================================================
 // 5. GARANTIA DE SINCRONIZAÇÃO E INÍCIO DO SERVIDOR
