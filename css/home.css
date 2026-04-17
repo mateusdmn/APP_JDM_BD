@@ -157,18 +157,1188 @@ body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; scroll
     transform: scale(1.1);
 }
 
-/* RESPONSIVIDADE VÍDEOS */
-.grid-videos {
+
+/* --- Estilos do Carrossel Largura Total --- */
+.section-full-width {
+    width: 100%;
+    padding: 60px 0;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+.carousel-container-full {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
     display: flex;
-    gap: 20px;
+    transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex: 0 0 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Mantém a proporção da imagem */
+}
+
+/* --- Botões Reforçados --- */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white !important;
+    border: none;
+    width: 50px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 9999; /* Força ficar na frente de tudo */
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    width: 60px;
+}
+
+.btn-prev {
+    left: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.btn-next {
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 40px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+}
+/* --- Seção de Parceiros Premium --- */
+.partners-section {
+    background: #fdfdfd;
+    padding: 80px 0;
+    overflow: hidden; /* Corta o que sai da tela */
+}
+
+.partners-header {
+    text-align: center;
     margin-bottom: 50px;
 }
 
-.video-principal { flex: 2; }
-.video-secundarios { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.partners-subtitle {
+    color: var(--primary); /* Use sua cor principal aqui */
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
 
-@media (max-width: 768px) {
-    .grid-videos { flex-direction: column; }
-    .partners-grid { gap: 30px; }
-    .partner-logo { width: 120px; }
+/* Container do Carrossel */
+.partners-slider {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* O "Trilho" que se move */
+.partners-track {
+    display: flex;
+    width: calc(250px * 10); /* Ajuste conforme o número de logos total */
+    animation: scrollInfinite 30s linear infinite; /* Movimento contínuo */
+}
+
+/* Estilo Circular das Logos */
+.partner-circle {
+    width: 150px;
+    height: 150px;
+    margin: 0 40px;
+    background: #fff;
+    border-radius: 50%; /* Faz o círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sombra suave */
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.partner-circle img {
+    width: 70%; /* Garante que a logo não toque as bordas do círculo */
+    height: auto;
+    filter: grayscale(100%); /* Deixa PB para ficar mais profissional */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.partner-circle:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.partner-circle:hover img {
+    filter: grayscale(0%); /* Volta a cor original */
+    opacity: 1;
+}
+
+/* Animação do Movimento */
+@keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-230px * 5)); } /* Move metade da track total */
+}
+
+/* Pausa a animação quando o usuário interage */
+.partners-slider:hover .partners-track {
+    animation-play-state: paused;
+}
+/* --- Seção de Planos Premium --- */
+.premium-plans-section {
+    background: #ffffff; /* Fundo branco e limpo iqual parceiros */
+    padding: 100px 0;
+}
+
+.plans-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.plans-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+/* Badge Laranja Acima do Título */
+.badge-accent {
+    color: var(--primary); /* Laranja */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Linha Decorativa em Laranja */
+.plans-line {
+    width: 60px;
+    height: 3px;
+    background: var(--primary); /* Laranja */
+    margin: 20px auto 0;
+}
+
+/* Grid de Planos */
+.grid-premium-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    align-items: center; /* Centraliza verticalmente o plano menor */
+}
+
+/* Card Base */
+.plan-card {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Círculo com Ícone Laranja */
+.plan-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 87, 34, 0.1); /* Laranja transparente */
+    color: var(--primary); /* Laranja */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto 25px;
+}
+
+.plan-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.plan-card p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* Estilo de Preço Profissional */
+.plan-price {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.plan-price .currency {
+    font-weight: bold;
+    font-size: 1rem;
+    vertical-align: super;
+}
+
+.plan-price .price {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.plan-price .cents {
+    font-size: 1rem;
+    vertical-align: super;
+}
+
+.plan-price .period {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Divisor Sutil */
+.plan-divider {
+    width: 100%;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+/* Lista de Recursos com Checkmark Laranja */
+.plan-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.plan-features li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.plan-features li i {
+    color: #ffc107; /* Amarelo Laranja - Acertando o ícone original */
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
+
+/* Botão Assinar Laranja Sólido */
+.btn-subscribe {
+    background: var(--primary); /* Laranja */
+    color: #fff !important;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+}
+
+.btn-subscribe:hover {
+    background: #e64a19; /* Laranja mais escuro no hover */
+    box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+}
+
+/* --- PLANO PRO (EM DESTAQUE) --- */
+.featured-plan {
+    border: 3px solid var(--primary); /* Borda Laranja Forte */
+    padding: 70px 40px; /* Um pouco maior */
+}
+
+/* Badge "Mais Popular" */
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary); /* Laranja */
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/* --- Seção Planos Minimalista --- */
+.minimal-pricing {
+    padding: 60px 0;
+    background: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.pricing-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Lado Esquerdo */
+.pricing-intro {
+    flex: 1;
+}
+
+.pricing-badge {
+    background: rgba(255, 152, 0, 0.1);
+    color: #FF9800; /* Laranja JDM */
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pricing-title {
+    font-size: 2.2rem;
+    margin: 15px 0;
+    color: #333;
+}
+
+.pricing-title span {
+    color: #FF9800;
+}
+
+/* --- Novo Estilo para Imagem Menor e Detalhada --- */
+
+/* Container Principal da Imagem */
+.pricing-image-wrapper {
+    position: relative; /* Necessário para os detalhes flutuantes */
+    width: 180px; /* Tamanho reduzido e fixo */
+    height: 180px; /* Mantém proporção circular */
+    margin: 40px auto 0; /* Centraliza horizontalmente e dá espaço superior */
+    display: block; /* Garante que ocupe sua própria linha */
+}
+
+/* Círculo Principal da Imagem */
+.pricing-image-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Faz o círculo perfeito */
+    overflow: hidden; /* Corta a imagem no formato do círculo */
+    border: 3px solid #fff; /* Borda branca interna */
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2); /* Sombra Laranja Suave */
+    z-index: 2; /* Fica acima da borda decorativa */
+    position: relative;
+}
+
+/* Garante que a imagem preencha o círculo corretamente */
+.pricing-image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche sem distorcer */
+    object-position: center; /* Centraliza a parte visível da foto */
+}
+
+/* Detalhe Minimalista de Borda Flutuante (Laranja) */
+.image-accent-border {
+    position: absolute;
+    top: -15px; /* Deslocamento para criar o efeito flutuante */
+    right: -15px; /* Deslocamento para criar o efeito flutuante */
+    width: 100px; /* Tamanho do detalhe */
+    height: 100px; /* Tamanho do detalhe */
+    border-radius: 50%;
+    border: 3px solid rgba(255, 152, 0, 0.4); /* Borda Laranja Transparente */
+    background: transparent;
+    z-index: 1; /* Fica atrás da imagem principal */
+}
+
+/* Ajuste de Responsividade (para telas menores) */
+@media (max-width: 900px) {
+    .pricing-image-wrapper {
+        width: 150px; /* Reduz um pouco mais em tablets/celulares */
+        height: 150px;
+        margin-bottom: 30px; /* Dá espaço para os cards abaixo */
+    }
+    .image-accent-border {
+        width: 80px;
+        height: 80px;
+        top: -10px;
+        right: -10px;
+    }
+}
+
+/* Grid de Cards Horizontais */
+.pricing-grid {
+    flex: 1.5;
+    display: flex;
+    gap: 20px;
+}
+
+.mini-card {
+    background: #fff;
+    border: 2px solid #f5f5f5;
+    border-radius: 16px;
+    padding: 30px;
+    flex: 1;
+    position: relative;
+    transition: 0.3s;
+}
+
+.mini-card:hover {
+    border-color: #FF9800;
+    transform: translateY(-5px);
+}
+
+.mini-card.featured {
+    border-color: #FF9800;
+    background: #fffdfa;
+}
+
+.popular-tag {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #FF9800;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.mini-card-header i {
+    font-size: 1.5rem;
+    color: #FF9800;
+    margin-bottom: 10px;
+}
+
+.mini-card-header h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.mini-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.mini-price .currency, .mini-price .cents {
+    font-size: 0.9rem;
+    vertical-align: super;
+}
+
+.mini-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.mini-list li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.mini-list i {
+    color: #FF9800;
+    margin-right: 8px;
+}
+
+/* Botões */
+.btn-orange-outline {
+    display: block;
+    text-align: center;
+    border: 2px solid #FF9800;
+    color: #FF9800;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-orange-outline:hover {
+    background: #FF9800;
+    color: #fff;
+}
+
+.btn-orange-solid {
+    display: block;
+    text-align: center;
+    background: #FF9800;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .pricing-container { flex-direction: column; }
+    .pricing-grid { width: 100%; flex-direction: column; }
+}
+/* --- Seção de Funcionalidades Premium --- */
+.features-premium {
+    padding: 100px 0;
+    background-color: #fcfcfc;
+    position: relative;
+    overflow: hidden;
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.features-tag {
+    color: #FF9800; /* Laranja JDM */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.orange-divider {
+    width: 50px;
+    height: 4px;
+    background: #FF9800;
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+/* Grid de Cards */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilo do Card Minimalista com Detalhes */
+.feature-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 24px;
+    border: 1px solid #eee;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+/* Ícones em Laranja Sólido */
+.icon-box {
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 152, 0, 0.1);
+    color: #FF9800;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    color: #222;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Linha de detalhe inferior que "cresce" no hover */
+.card-line {
+    width: 0;
+    height: 3px;
+    background: #FF9800;
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+
+/* Efeitos de Hover */
+.feature-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.12);
+    border-color: rgba(255, 152, 0, 0.3);
+}
+
+.feature-card:hover .icon-box {
+    background: #FF9800;
+    color: #fff;
+    transform: rotate(10deg);
+}
+
+.feature-card:hover .card-line {
+    width: 40px;
+}
+
+/* Elemento de Imagem Minimalista ao Fundo */
+.bg-abstract-element {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    opacity: 0.05; /* Deixa a imagem quase invisível, muito elegante */
+    width: 400px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bg-abstract-element img {
+    width: 100%;
+    filter: grayscale(100%);
+}
+/* Container de imagem decorativa corrigido */
+.features-visual-element {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 150px;
+    opacity: 0.15; /* Sutil para não poluir */
+    filter: sepia(1) saturate(5) hue-rotate(-30deg); /* Força o tom laranja na img */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Número decorativo transparente no fundo do card */
+.card-decor-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255, 152, 0, 0.05); /* Laranja quase invisível */
+    transition: 0.3s;
+}
+
+/* Ajuste no Card para mais detalhes */
+.feature-card {
+    border-top: 4px solid transparent; /* Reserva espaço para borda laranja */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+}
+
+.feature-card:hover {
+    border-top: 4px solid #FF9800; /* Borda laranja surge no topo */
+}
+
+.feature-card:hover .card-decor-number {
+    color: rgba(255, 152, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Ponto flutuante decorativo */
+.floating-orange-dot {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,152,0,0.4) 0%, rgba(255,152,0,0) 70%);
+    top: -40px;
+    left: -40px;
+    animation: floatAnim 4s infinite ease-in-out;
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, 15px); }
+}
+
+/* Melhoria no texto para profissionalismo */
+.feature-card p {
+    font-size: 0.88rem;
+    color: #555;
+    margin-top: auto; /* Joga o texto para baixo se o título for curto */
+}
+/* --- Seção Essência Premium --- */
+.essencia-premium {
+    position: relative;
+    padding: 100px 0;
+    background: url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1920') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Efeito Parallax */
+    overflow: hidden;
+}
+
+/* Overlay Laranja Profissional */
+.essencia-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
+    z-index: 1;
+}
+
+.essencia-premium .container {
+    position: relative;
+    z-index: 2;
+}
+
+.essencia-header {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #fff;
+}
+
+.essencia-subtitle {
+    color: #FFB74D; /* Laranja mais claro para contraste */
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.essencia-line {
+    width: 60px;
+    height: 4px;
+    background: #fff;
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+/* Grid e Cards Minimalistas */
+.essencia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.essencia-card {
+    background: rgba(255, 255, 255, 0.05); /* Efeito Glassmorphism */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 40px;
+    border-radius: 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+    color: #fff;
+}
+
+.essencia-card:hover {
+    background: #fff;
+    color: #333;
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* Ícone Laranja Dinâmico */
+.essencia-icon-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background: #FF9800;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 30px;
+    transition: 0.3s;
+}
+
+.icon-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #FF9800;
+    animation: pulseOrange 2s infinite;
+}
+
+@keyframes pulseOrange {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Detalhes de Funcionalidades dentro do Card */
+.essencia-details {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+    text-align: left;
+    display: none; /* Escondido por padrão para minimalismo */
+}
+
+.essencia-card:hover .essencia-details {
+    display: block; /* Revela ao passar o mouse */
+}
+
+.essencia-details li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.essencia-details i {
+    color: #FF9800;
+    margin-right: 10px;
+}
+.essencia-minimal {
+    position: relative;
+    padding: 120px 0;
+    background-color: #fcfcfc; /* Fundo base claro */
+    overflow: hidden;
+}
+
+/* Imagem de Fundo Suave */
+.essencia-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(''); /* Use uma imagem de engenharia/arquitetura */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08; /* Extremamente clara para ser minimalista */
+    filter: grayscale(100%);
+    z-index: 1;
+}
+
+/* Efeito de Formas em Movimento */
+.essencia-shapes .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,152,0,0.15) 0%, rgba(255,152,0,0) 70%);
+    z-index: 2;
+    filter: blur(40px);
+}
+
+.shape.s1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+    animation: floatMove 15s infinite alternate ease-in-out;
+}
+
+.shape.s2 {
+    width: 300px;
+    height: 300px;
+    bottom: -50px;
+    left: -50px;
+    animation: floatMove 20s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatMove {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 80px) scale(1.1); }
+}
+
+/* Conteúdo e Cards */
+.essencia-content {
+    position: relative;
+    z-index: 3;
+}
+
+.tag-orange {
+    color: #FF9800;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.essencia-card-v2 {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 152, 0, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    transition: 0.4s ease;
+    text-align: center;
+}
+
+.essencia-card-v2 i {
+    font-size: 2.5rem;
+    color: #FF9800;
+    margin-bottom: 20px;
+}
+
+.essencia-card-v2:hover {
+    border-color: #FF9800;
+    transform: translateY(-10px);
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.1);
+}
+
+/* Detalhe Profissional: Borda Laranja no Card em Destaque */
+.essencia-card-v2.featured {
+    border: 2px solid #FF9800;
+    box-shadow: 0 15px 30px rgba(255, 152, 0, 0.05);
+}
+/* Container Principal */
+.essencia-tech {
+    position: relative;
+    padding: 120px 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* 1. Imagem de Fundo Clara (Minimalista) */
+.bg-image-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('sua-imagem-de-obra-clara.jpg'); /* Substitua aqui */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05; /* Deixa a imagem quase invisível, muito limpo */
+    filter: grayscale(100%);
+    z-index: 1;
+}
+
+/* 2. Movimentação de Manchas Laranjas ao Fundo */
+.moving-blobs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+.blob {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.15) 0%, rgba(255, 152, 0, 0) 70%);
+    filter: blur(60px);
+    border-radius: 50%;
+    animation: blobMovement 20s infinite alternate ease-in-out;
+}
+
+.orange-1 { width: 600px; height: 600px; top: -200px; right: -100px; }
+.orange-2 { width: 500px; height: 500px; bottom: -150px; left: -100px; animation-duration: 25s; }
+
+@keyframes blobMovement {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 50px) scale(1.2); }
+}
+
+/* 3. Cards com Efeito de Vidro (Glassmorphism) */
+.card-glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px); /* Efeito de vidro */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 45px 30px;
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.card-glass:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #FF9800;
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.1);
+}
+
+/* Ícones e Detalhes Laranja */
+.card-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    color: #FF9800;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.icon-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FF9800;
+    border-radius: 20px;
+    animation: rotateRing 10s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tech-tag {
+    color: #FF9800;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+}
+/* --- Seção Essência Tech Minimalista --- */
+.essencia-premium-tech {
+    position: relative;
+    padding: 100px 0;
+    background: #f9f9f9; /* Fundo base muito claro */
+    overflow: hidden;
+}
+
+/* Camada de Imagem Minimalista */
+.bg-texture-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   background-image: url('../assets/planofundo.jpg'); /* Use uma imagem técnica de blueprint ou obra */
+    background-size: cover;
+    background-position: center;
+    opacity: 1.0; /* Quase invisível, estilo marca d'água */
+    z-index: 1;
+}
+
+/* Elementos de Movimento Suave */
+.moving-elements .particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.2) 0%, rgba(255, 152, 0, 0) 70%);
+    border-radius: 50%;
+    z-index: 2;
+    filter: blur(50px);
+}
+
+.particle.p1 { width: 400px; height: 400px; top: -100px; right: -50px; animation: floatUI 15s infinite alternate; }
+.particle.p2 { width: 300px; height: 300px; bottom: -50px; left: -50px; animation: floatUI 12s infinite alternate-reverse; }
+
+@keyframes floatUI {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 60px) scale(1.1); }
+}
+
+.relative-z { position: relative; z-index: 5; }
+
+/* Cards Tech Minimalistas */
+.essencia-card-tech {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+    padding: 40px 30px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 320px; /* Altura inicial compacta */
+    overflow: hidden;
+    text-align: center;
+    cursor: default;
+}
+
+/* Hover: Expansão e Revelação */
+.essencia-card-tech:hover {
+    height: 520px; /* Expande para mostrar mais info */
+    background: #ffffff;
+    border-color: #FF9800;
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.1);
+    transform: translateY(-10px);
+}
+
+.extra-info {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s; /* Delay para a expansão terminar */
+}
+
+.essencia-card-tech:hover .extra-info {
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 20px;
+}
+
+/* Estilização Interna */
+.essencia-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #FF9800;
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.essencia-details-tech {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.essencia-details-tech li {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.essencia-details-tech i {
+    color: #FF9800;
+    margin-right: 8px;
+}
+
+.short-desc {
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.detailed-text {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
 }
