@@ -1,14 +1,14 @@
 // config/db.js
+require('dotenv').config(); // Carrega as variáveis do arquivo .env
 const { Sequelize } = require('sequelize');
 
-// A SENHA É O TERCEIRO PARÂMETRO DA INSTÂNCIA DO SEQUELIZE:
 const sequelize = new Sequelize(
-    'jdm_db',     // 1. Nome do Banco de Dados (que será criado)
-    'root',       // 2. Usuário (o padrão é 'root')
-    '75467546', // 3. <-- COLOQUE SUA SENHA AQUI
+    process.env.DB_NAME,       // Nome do Banco de Dados
+    process.env.DB_USER,       // Usuário
+    process.env.DB_PASSWORD,   // Senha
     {
-        host: 'localhost',
-        dialect: 'mysql',
+        host: process.env.DB_HOST,
+        dialect: process.env.DB_DIALECT || 'mysql',
         // Desativa logs de consulta para manter o console limpo
         logging: false, 
         pool: {
